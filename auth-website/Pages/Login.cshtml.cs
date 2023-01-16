@@ -6,7 +6,7 @@ namespace auth_website.Pages
 {
     public class LoginModel : PageModel
     {
-        public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
 
         public void OnGet()
         {
@@ -18,10 +18,11 @@ namespace auth_website.Pages
             }
             host = host.Replace("auth.", "");
 
-            HttpContext.Response.Cookies.Append("_previewID", "213c5104-0bef-4c61-9da2-2d634931e3d7", new CookieOptions
+            HttpContext.Response.Cookies.Append("_previewID", Environment.GetEnvironmentVariable("PreviewCookie") ?? string.Empty, new CookieOptions
             {
                 Domain = host,
-                
+                Expires = DateTimeOffset.UtcNow.AddDays(7),
+                Secure = true
             });
 
             ReturnUrl = host;
