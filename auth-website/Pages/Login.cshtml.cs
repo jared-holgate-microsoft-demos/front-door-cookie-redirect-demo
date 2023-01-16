@@ -18,12 +18,15 @@ namespace auth_website.Pages
             }
             host = host.Replace("auth.", "");
 
-            HttpContext.Response.Cookies.Append("_previewID", Environment.GetEnvironmentVariable("PreviewCookie") ?? string.Empty, new CookieOptions
-            {
-                Domain = host,
-                Expires = DateTimeOffset.UtcNow.AddDays(7),
-                Secure = true
-            });
+            HttpContext.Response.Cookies.Append(
+                Environment.GetEnvironmentVariable("PreviewCookieName") ?? string.Empty, 
+                Environment.GetEnvironmentVariable("PreviewCookieValue") ?? string.Empty, 
+                new CookieOptions
+                {
+                    Domain = host,
+                    Expires = DateTimeOffset.UtcNow.AddDays(7),
+                    Secure = true
+                });
 
             ReturnUrl = host;
         }
