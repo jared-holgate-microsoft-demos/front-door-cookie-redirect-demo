@@ -11,10 +11,10 @@ namespace auth_website.Pages
         public void OnGet()
         {
             var hosts = HttpContext.Request.Headers["X-Forwarded-Host"];
-            var host = string.Empty;
+            var host = Request.Host.Host;
             if(hosts.Count != 0)
             {
-                host = hosts[0] ?? string.Empty;
+                //host = hosts[0] ?? string.Empty;
             }
             host = host.Replace("auth.", "");
 

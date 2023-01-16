@@ -5,6 +5,11 @@ using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedHost | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+});
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -34,6 +39,8 @@ IdentityModelEventSource.ShowPII = true;
 
 var app = builder.Build();
 
+app.UseForwardedHeaders();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -41,8 +48,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -53,5 +58,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

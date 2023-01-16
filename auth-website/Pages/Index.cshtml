@@ -1,11 +1,14 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Auth Website</h1>
+    <h1 class="display-5">Preview Website Authentication</h1>
     <p>Our preview website is invitation only. If you have been invited, please click the link below to access the site. Otherwise, please navigate to our website at <a href="https://microsoft.com">microsoft.com</a>. Thanks!</p>
-    <a asp-area="" asp-page="/Login">Access the Preview Website</a>
+    <a class="display-6" href="/Login">Access the Preview Website</a>
+    <br/>
+    <br/>
+    <p class="small">Protocol: @HttpContext.Request.Scheme  Host: @HttpContext.Request.Host.Host</p>
 </div>
