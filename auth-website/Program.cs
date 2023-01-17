@@ -21,6 +21,7 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
             options.Domain = $"{Environment.GetEnvironmentVariable("B2CDomainPrefix")}.onmicrosoft.com";
             options.TenantId = Environment.GetEnvironmentVariable("B2CTenantId");
             options.ClientId = Environment.GetEnvironmentVariable("B2CClientId");
+            options.SignedOutRedirectUri = "/SignedOut";
         });
 
 builder.Services.AddAuthorization(options =>
@@ -31,6 +32,7 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddRazorPages(options => {
     options.Conventions.AllowAnonymousToPage("/Index");
+    options.Conventions.AllowAnonymousToPage("/SignedOut");
 })
 .AddMvcOptions(options => { })
 .AddMicrosoftIdentityUI();

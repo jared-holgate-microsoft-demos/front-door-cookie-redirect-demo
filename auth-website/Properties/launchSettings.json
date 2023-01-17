@@ -17,7 +17,9 @@
         "B2CClientId": "1a240dbf-dc06-4634-9c9d-aa106ce9bd30",
         "B2CClientSecret": "VY_8Q~PplZqtur3Dhozu~zP-0nXtDCTuW34Pmb9y",
         "B2CDomainPrefix": "MngEnvMCAP538907B2C01",
-        "B2CTenantId": "74db1115-10c4-42b6-a652-60a98a1de0cc"
+        "B2CTenantId": "74db1115-10c4-42b6-a652-60a98a1de0cc",
+        "PreviewCookieName": "_previewId",
+        "PreviewCookieValue": "74db1115-10c4-42b6-a652-60a98a1de0cc"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7114"
