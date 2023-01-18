@@ -1,1 +1,1 @@
-# pets-at-home-demo
+# Exampe code
